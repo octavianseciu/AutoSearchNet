@@ -8,16 +8,21 @@ Rezultatele sunt afisate,redate vocal, cu posibilitatea deschiderii paginii web 
 AutoSearchNet este dependent de Python si Windows. De asemenea, leagă și încorporează mai multe alte biblioteci mai mici: Flask, Pywinauto, SpeechText, Pyaudio,Webbrowser, Youtubesearchpython, Pygame,Time, Sys, 
 ## Structura aplicației
 * AutoSearchNet
-		* static
-		          	- imagini.png, jpg
-		- templates (crearea paginilor cu Jinja, HTML și CSS )
-			- index.html
-			- my_page.html
-			- rezultat.html
-		- auto_search.py (codul principal al aplicației, serverul care direcționea utilizatorul către pagina de pornire și către pagina de 					  rezultate )
-		- searchYoutube.py
-		- autowin.py
-		- speechText.py
+   - data
+       - comenzi.yaml
+   - static
+       - imagini.png, jpg
+       - arhitectura.png
+   - templates (crearea paginilor cu Jinja, HTML și CSS )
+      - index.html
+      - my_page.html
+      - rezultat.html
+      - citeste.html
+    - auto_search.py (codul principal al aplicației, serverul care direcționea utilizatorul către pagina de pornire și       către pagina de rezultate )
+    - searchYoutube.py
+    - autowin.py
+    - speechText.py
+![This is an image]
 ## Utilizare
 Dupa instalare si pornirea serverului din auto_search.py, aplicatia prezinta in pagina web/my_page butonul “citeste mai mult” pentru a accesa prezenta informare despre proiect.
 Central, exista butonul de pornire a inregistrarii comenzilor vocale, avand un background image intuitiv.
