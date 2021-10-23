@@ -22,7 +22,8 @@ AutoSearchNet este dependent de Python si Windows. De asemenea, leagă și în
     - searchYoutube.py
     - autowin.py
     - speechText.py
-![This is an image]
+ ## Arhitectura
+![Arhitectura](https://github.com/octavianseciu/AutoSearchNet/blob/master/static/arhitectura.png)
 ## Utilizare
 Dupa instalare si pornirea serverului din auto_search.py, aplicatia prezinta in pagina web/my_page butonul “citeste mai mult” pentru a accesa prezenta informare despre proiect.
 Central, exista butonul de pornire a inregistrarii comenzilor vocale, avand un background image intuitiv.
