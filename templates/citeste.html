@@ -1,0 +1,47 @@
+<p style=" text-align: left; ">
+    <h1>Descriere proiect </h1>       
+    <p>Cursant
+    <b>Seciu Octavian Luchian</b></p>
+    <p>Trainer curs Python
+    <b>RAREȘ POP</b></p>
+        <span id="dots">...</span><span id="more"> 
+            <p style=" text-align: left;">este  o aplicație web WSGI(interfața de gateway a serverului web, standard Python) folosind automatizarea interfeței grafice Microsoft Windows. Permite trimiterea de acțiuni ale mouse-ului și tastaturii către ferestre de dialog și controale. 
+            Contine suport pentru motorul de recunoaștere a vorbirii / API. Se utilizeaza comanda vocala pentru actionarea motoarelor Youtub, care cauta videoclipuri, obtine informatii despre acestea si sugestii de cautare.
+            Rezultatele sunt afisate,redate vocal, cu posibilitatea deschiderii paginii web dorite (cu continut youtube) si a controlului  acesteia.
+            </p>
+            <b>Dependente si Instalare module</b>
+                <p style=" text-align: left;">AutoSearchNet este dependent de Python si Windows. De asemenea, leagă și încorporează mai multe alte biblioteci mai mici: Flask, Pywinauto, SpeechText, Pyaudio,Webbrowser, Youtubesearchpython, Pygame,Time, Sys, </p>
+            <b>Structura aplicației</b>
+                <ul style=" text-align: left;">
+                    <li>AutoSearchNet
+                        <ul>
+                            <li>static</li>
+                                <ul>
+                                    <li>imagini.png, jpg</li>
+                                </ul>                    
+                            <li>templates (crearea paginilor cu Jinja, HTML și CSS )</li>
+                                <ul>
+                                    <li>index.html</li>
+                                    <li>my_page.html</li>
+                                    <li>rezultat.html</li>
+                                    <li>citeste.html</li>
+                                </ul>    
+                            <li>auto_search.py (codul principal al aplicației, serverul care direcționează utilizatorul către pagina de pornire și către pagina de rezultate )</li>
+                            <li>searchYoutube.py</li>
+                            <li>autowin.py</li>
+                            <li>speechText.py</li>
+                        </ul>
+                    </li>        
+                </ul>
+            <b>Utilizare</b>
+                <p style=" text-align: left;">Dupa instalare si pornirea serverului din auto_search.py, aplicatia prezinta in pagina web/my_page butonul “citeste mai mult” pentru a accesa prezenta informare despre proiect.
+                Central, exista butonul de pornire a inregistrarii comenzilor vocale, avand un background image intuitiv.
+                Accesarea butonului, activeaza microfonul incorporat in masina de lucru(PC), se inregistreaza vocea cu o frecventa a duratei de 5sec si pauza de 2sec, in bucla, pana la identificarea unei voci, respectiv inregistrari. In baza transriptului se cauta rezultate si sugestii in aplicatia youtube si se prezinta conform sablonului rezultat.htlm.
+                Rezultatele sunt afisate in format tabelar cu descriere detaliata: Link, Titlu, Desciere, Durata, Data Publicarii. In acelasi timp sunt prezentate si alte sugestii de cautare apropiate cautarii initiale.
+                Utilizatorul are optiunea redarii audio atat a rezultatelor cat si a sugestiilor.
+                Desciderea paginii web/youtube se face prin comanda vocala specificata, actionand butonul dedicat, care se efectueaza in Chrome. 
+                Pentru pagina deschisa sunt specificate comenzi vocale dedicate, care au rolul de manipulare a playerului video si de inchidere a paginii web.
+                Actiunile utilizatorului se pot repeta ori de cate ori se doreste.
+                </p>
+        </span>
+</p>

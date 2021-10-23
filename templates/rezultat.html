@@ -1,0 +1,158 @@
+{% extends 'index.html'%}
+{% block body%}
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid rgb(26, 25, 25);
+        text-align: left;
+    }
+</style>
+<div class=" jumbotron text-center">
+    <main role="main" class="inner cove">
+        <h1 class="cover-heading">Auto Speach Net</h1>
+        <form method="POST" action="" enctype=multipart/form-data>
+            <b id="inregistrare" style="text-align: right;  color:rgb(63, 3, 11); font-size:17px;"></b><br>
+            <table style="font-size: 12px; background-color: #c6c9ca; color: rgb(8, 8, 8); width:auto;">
+                <tr>
+                    <th>
+                        <button id="comanda_1" type="submit" name="comanda_1" value='ComandaVocala2'
+                            style="width:180px;height:90px">
+                            <img onmouseover="hover(this);" onmouseout="unhover(this);" height="100%"
+                                src="static/images2.jpg" />
+                        </button>
+                    </th>
+                    <th>
+                        <button id="comanda_1" type="submit" name="comanda_1" value='ComandaVocala3'
+                            style="width:180px;height:90px">
+                            <img onmouseover="hover1(this);" onmouseout="unhover1(this);" height="100%"
+                                src="static/casti.jpg" />
+                        </button>
+                    </th>
+                    <th>
+                        <button id="comanda_1" type="submit" name="comanda_1" value='ComandaVocala4'
+                            style="width:180px;height:90px">
+                            <img onmouseover="hover1(this);" onmouseout="unhover1(this);" height="100%"
+                                src="static/casti.jpg" />
+                        </button>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <b style="text-align: left;  color:rgb(30, 87, 4); font-size:17px;">"deschide, (nr.)2"</b><br>
+                        <b style="text-align: left;  color:rgb(30, 87, 4); font-size:17px;">"revenire (la pagina
+                            principala)"</b>
+                    </td>
+                    <td>
+                        <b style="text-align: left;  color:rgb(139, 8, 52); font-size:17px;">Redare audio Sugestii
+                            Youtube</b>
+                    </td>
+                    <td>
+                        <b style="text-align: left;  color:rgb(139, 8, 52); font-size:17px;">Redare audio Titlu
+                            Rezultate</b>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <table style="font-size: 12px; background-color: #c6c9ca; color: rgb(8, 8, 8); width:auto;">
+                <tr>
+                    <th>
+                        <b style="text-align: left;  color:rgb(83, 6, 36); font-size:17px;">Comenzi Vocale<br>pagina
+                            Youtube</b>
+                    </th>
+
+                    <th style="width: 300px;">
+                        <b style="text-align: left;  color:rgb(212, 7, 24); font-size:17px;"><ins>omite</ins>(Anunturi)</b><br>
+                        <b style="text-align: left;  color:rgb(212, 7, 24); font-size:17px;"><ins>închide</ins>(Anunturi)</b><br>
+                        <b style="text-align: left;  color:rgb(212, 7, 24); font-size:17px;"><ins>skip</ins>(Skip
+                            Ads)</b><br>
+                        <b style="text-align: left;  color:rgb(212, 7, 24); font-size:17px;"><ins>sus,
+                                tare</ins>(volum)</b><br>
+                        <b style="text-align: left;  color:rgb(212, 7, 24); font-size:17px;"><ins>jos,
+                                încet</ins>(volum)</b><br>
+                        <b style="text-align: left;  color:rgb(212, 7, 24); font-size:17px;"><ins>salvează</ins>(play
+                            list)</b><br>
+                        <b style="text-align: left;  color:rgb(212, 7, 24); font-size:17px;"><ins>creează</ins>(play
+                            list)</b><br>
+                        <b style="text-align: left;  color:rgb(212, 7, 24); font-size:17px;"><ins>oprește,
+                                întrerupe</ins>(redare)</b><br>
+                        <b style="text-align: left;  color:rgb(212, 7, 24); font-size:17px;"><ins>pornește,
+                                redă</ins>(redare)</b><br>
+                        <b style="text-align: left;  color:rgb(212, 7, 24); font-size:17px;"><ins>revenire</ins>(închide pagina
+                            youtube, revine la aplicatie)</b>
+                    </th>
+                </tr>
+            </table>
+
+        </form>
+    </main>
+
+
+    {% if see[0] != 0 %}
+    <h3 style="text-align: left;">Rezultat Youtube "{{comanda}}"</h3>
+    <table style="font-size: 12px; background-color: #c6c9ca; color: rgb(8, 8, 8); width:auto;">
+        <tr>
+            <th>Nr</th>
+            <th>Link</th>
+            <th>Titlu</th>
+            <th>Desciere</th>
+            <th>Durata</th>
+            <th>Publicat</th>
+            <col width="150">
+        </tr>
+        {% for data in dateYoutube %}
+        <tr>
+            <td><b><ins>{{ loop.index }}</ins></b></td>
+            <td><b>{{data[0]}}</b></td>
+            <td><b>{{data[1]}}</b></td>
+            <td><b>{{data[2]}}</b></td>
+            <td><b>{{data[3]}}</b></td>
+            <td><b>{{data[4]}}</b></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+
+    {% if see[0] == 0 %}
+    <h3 style="text-align: left;">Rezultat cautare Google</h3>
+    {% else %}
+    <h3 style="text-align: left;">Sugestii Youtube "{{comanda}}"</h3>
+    {% endif %}
+    <table style="font-size: 12px; background-color: #8f9597; color: rgb(8, 8, 8); width:100%;">
+        <tr>
+            <th>Nr</th>
+            <th>Link</th>
+            <col width="40">
+        </tr>
+        {% for link in see %}
+        <tr>
+            {% if loop.index != 1 %}
+            <td><b><ins>{{ loop.index }}</ins></b></td>
+            <td><b>{{link}}</b></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<script>
+    function hover(element) {
+        element.setAttribute('src', 'static/green.jpg');
+    }
+    function unhover(element) {
+        element.setAttribute('src', 'static/images2.jpg');
+    }
+
+    function hover1(element) {
+        element.setAttribute('src', 'static/speaker.png ');
+    }
+    function unhover1(element) {
+        element.setAttribute('src', 'static/casti.jpg');
+    }
+
+    document.getElementById("comanda_1").onclick = displayDate;
+    function displayDate() {
+        document.getElementById("inregistrare").innerHTML = 'Comenda vocal in 3 sec';
+    }
+</script>
+{% endblock%}
