@@ -5,7 +5,7 @@ este  o aplicație web WSGI(interfața de gateway a serverului web, standard Py
 Contine suport pentru motorul de recunoaștere a vorbirii / API. Se utilizeaza comanda vocala pentru actionarea motoarelor Youtub, care cauta videoclipuri, obtine informatii despre acestea si sugestii de cautare.
 Rezultatele sunt afisate,redate vocal, cu posibilitatea deschiderii paginii web dorite (cu continut youtube) si a controlului  acesteia.
 ## Dependente si Instalare module
-AutoSearchNet este dependent de Python si Windows. De asemenea, leagă și încorporează mai multe alte biblioteci mai mici: Flask, Pywinauto, SpeechText, Pyaudio,Webbrowser, Youtubesearchpython, Pygame,Time, Sys, 
+AutoSearchNet este dependent de Python si Windows. De asemenea, leagă și încorporează mai multe alte biblioteci mai mici: Flask, Pywinauto, SpeechText, Pyaudio,Webbrowser, Youtubesearchpython, Pygame,Time, Sys, Re
 ## Structura aplicației
 * AutoSearchNet
    - data
