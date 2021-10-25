@@ -1,21 +1,26 @@
 import speech_recognition as sr
 import pyaudio
-
+from pygame import mixer
+import pygame
+import sys
+from gtts import gTTS
+from playsound import playsound
+import time
 
 def speechTtext(timeout):
-    recognizer = sr.Recognizer()
-    ''' recording the sound '''
+    '''inregistreaza sunetul utilizand microfonul clientului'''
+    recognizer = sr.Recognizer() # initializeaza inregistrarea
     try:
-        with sr.Microphone() as source:
-            recognizer.adjust_for_ambient_noise(source, duration=1)
-            print(f"Recording for {timeout} seconds")
-            recorded_audio = recognizer.listen(source, timeout=timeout)
-            print("Done recording")
-        ''' Recorgnizing the Audio '''
-    except:
-        pass
-    try:
-        print("Recognizing the text")
+        print('play')
+        # gestioneaza deschiderea/inchiderea microfonului
+        with sr.Microphone() as source: 
+            # reduce zgomotul de fond
+            recognizer.adjust_for_ambient_noise(source, duration=1) 
+            # inregistreaza cu o durata data de parametrul timeout
+            recorded_audio = recognizer.listen(source, timeout=timeout) 
+        print('stop')
+
+        ''' transcriptul textului in limba romana'''
         text = recognizer.recognize_google(
             recorded_audio,
             language="ro-RO"
@@ -26,17 +31,14 @@ def speechTtext(timeout):
 
 
 def redareAudio(text):
-    from gtts import gTTS
-    from playsound import playsound
-    import time
-    var = gTTS(text=text, lang='ro')
-    var.save('cauta_sugestii.mp3')
-
-    from pygame import mixer
-    import pygame
-    import sys
-
-    file = 'cauta_sugestii.mp3'
+    '''preluarea textului si salvarea in format mp3
+    '''
+    mp3 = gTTS(text=text, lang='ro')
+    file = 'static/translator.mp3'
+    mp3.save(file)
+    '''redarea vocala 
+    este limitata de token-procesor instalat in windows
+    pt limba romana nu este disponibil un Tokenizer in Windows 10'''
     pygame.init()
     pygame.mixer.init()
     pygame.mixer.music.load((file))

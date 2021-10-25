@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 
 
-links = []
+sugestiiCautare = []
 dateYoutube = []
 comanda = None
 
@@ -19,7 +19,6 @@ def home():
 
 @app.route('/my_page')
 def my_page():
-    dateYoutube.clear()
     return render_template('my_page.html', errorcomandaVocala='')
 
 
@@ -31,8 +30,8 @@ def rezultat():
 @app.route('/my_page', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        global links, dateYoutube, comanda
-        print(request.form)
+        global sugestiiCautare, dateYoutube, comanda
+        # print(request.form)
         if request.form['comanda_1'] == 'ComandaVocala1':
             x = 0
             while True:
@@ -48,7 +47,7 @@ def index():
             suggestions = Suggestions(language='en', region='ro', )
             text = suggestions.get(comanda)
             text = ','.join(text['result'])
-            links = text.split(',')
+            sugestiiCautare = text.split(',')
 
             from youtubesearchpython import VideosSearch
             try:
@@ -66,17 +65,16 @@ def index():
                     dateYoutube[x].append(i['publishedTime'])
             except:
                 pass
-            return render_template('rezultat.html', see=links, dateYoutube=dateYoutube, comanda=comanda)
-        if request.form['comanda_1'] == 'ComandaVocala3':
-            sugestiiLinks = ','.join(links)
-            print('links links', sugestiiLinks)
-
+            return render_template('rezultat.html', sugestiiCautare=sugestiiCautare, dateYoutube=dateYoutube, comanda=comanda)
+        elif request.form['comanda_1'] == 'ComandaVocala3':
+            sugestiiLinks = ','.join(sugestiiCautare)
+            # print('sugestiiCautare', sugestiiCautare)
             try:
                 redareAudio(sugestiiLinks)
             except:
                 pass
-            return render_template('rezultat.html', see=links, dateYoutube=dateYoutube, comanda=comanda)
-        if request.form['comanda_1'] == 'ComandaVocala4':
+            return render_template('rezultat.html', sugestiiCautare=sugestiiCautare, dateYoutube=dateYoutube, comanda=comanda)
+        elif request.form['comanda_1'] == 'ComandaVocala4':
             titluYutube = []
             for i in dateYoutube:
                 titluYutube.append(i[1])
@@ -85,11 +83,11 @@ def index():
                 redareAudio(titluYutube)
             except:
                 pass
-            return render_template('rezultat.html', see=links, dateYoutube=dateYoutube, comanda=comanda)
-        if request.form['comanda_1'] == 'ComandaVocala2':
-            nr, comanda = text_comanda_sec(links)
+            return render_template('rezultat.html', sugestiiCautare=sugestiiCautare, dateYoutube=dateYoutube, comanda=comanda)
+        elif request.form['comanda_1'] == 'ComandaVocala2':
+            nr, comanda = comandaOpenWebYoutube()
             if comanda != None and comanda == 'deschide':
-                nr = nrTabrezultat(nr)
+                nr = nrLinkrezultat(nr)
                 print(nr)
                 if nr != None:
                     tab = openTabrezultat(dateYoutube, nr)
@@ -98,16 +96,15 @@ def index():
                     x = Tab('YouTube')
                     while True:
                         try:
-                            comanda = str(speechTtext(4))
+                            comanda = str(speechTtext(3))
                             print(comanda)
-             
                         except:
                             pass
                         if comanda != None:
                             comanda = comanda.strip()
                             comanda = comanda.lower()
                             x.comenziYoutube(comanda)
-                            if comanda == 'revenire':
+                            if comanda == 'întoarce':
                                 break
                         time.sleep(0.1)
                     try:
@@ -117,12 +114,12 @@ def index():
                         w.click_input()
                     except:
                         pass
-                    return render_template('rezultat.html', see=links, dateYoutube=dateYoutube)
+                    return render_template('rezultat.html', sugestiiCautare=sugestiiCautare, dateYoutube=dateYoutube)
                 else:
-                    return render_template('rezultat.html', see=links, dateYoutube=dateYoutube, errorcomandaVocala='Comanda vocala nepotrivita\nRepetati inregisrarea comanzii vocale')
-            elif comanda != None and comanda == 'revenire':
+                    return render_template('rezultat.html', sugestiiCautare=sugestiiCautare, dateYoutube=dateYoutube, errorcomandaVocala='Comanda vocala nepotrivita\nRepetati inregisrarea comanzii vocale')
+            elif comanda != None and comanda == 'stop':
                 dateYoutube.clear()
-                links.clear()
+                sugestiiCautare.clear()
                 return render_template('my_page.html', errorcomandaVocala='')
             else:
                 return render_template('my_page.html', errorcomandaVocala='Comanda vocala nepotrivita\nRepetati inregisrarea comanzii vocale')

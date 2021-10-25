@@ -12,7 +12,7 @@
         <img height="100%" width="100%" style="margin-top: -7px; z-index:-1;" src="static/youtube2.png" />
       </div>
     </div>
-    <b>Rezultatele sunt afisate si redate vocal</b>
+    <b>Rezultatele vor fi afisate si redate vocal</b>
     <form method="POST" action="" enctype=multipart/form-data>
       <button id="comanda_1" type="submit" name="comanda_1" value='ComandaVocala1'>
         <img onmouseover="hover(this);" onmouseout="unhover(this);" height="100%" src="static/youtube1.jpg" />
@@ -20,14 +20,21 @@
     </form>
 
     <b style="text-align: right;  color:rgb(63, 3, 11); font-size:17px;">{{errorcomandaVocala}}</b>
-    <b id="inregistrare" style="text-align: right;  color:rgb(63, 3, 11); font-size:17px;"></b><br>
+    <br><b id="inregistrare" style="text-align: right;  color:rgb(63, 3, 11); font-size:17px;"></b><br>
     <div class="card text-white  bg-dark mb-3">
       <div class="card-header">
         <p class="lead">
           <button class="btn btn-lg btn-secondary" onclick="citeste()" id="myBtn">Citeste mai mult</button>
+          <div  id="citeste" style="display:inline">
+            <h1>Descriere proiect </h1>       
+            <p>Cursant
+            <b>Seciu Octavian Luchian</b></p>
+            <p>Trainer curs Python
+            <b>RAREȘ POP</b></p>
+            </div>
         </p>
 
-        {% include 'citeste.html'%}
+        <div id="myDIV" style="visibility: hidden; height: 0px;"> {% include 'citeste.html'%}
 
         <img height="55px" width="100%" style="margin-top: -7px; z-index:-1;" src="static/images1.jpg" />
       </div>
@@ -45,7 +52,7 @@
 
   document.getElementById("comanda_1").onclick = displayDate;
   function displayDate() {
-    document.getElementById("inregistrare").innerHTML = 'Comenda vocal in 3 sec';
+    document.getElementById("inregistrare").innerHTML = 'Asteapta 3 sec si comanda vocal';
   }
 
   function citeste() {
@@ -57,10 +64,17 @@
       dots.style.display = "inline";
       btnText.innerHTML = "Citeste mai mult";
       moreText.style.display = "none";
+      document.getElementById("citeste").style.display = "none";
+
+
     } else {
       dots.style.display = "none";
       btnText.innerHTML = "Minimalizeaza";
       moreText.style.display = "inline";
+      document.getElementById("myDIV").style.visibility = "visible";
+      document.getElementById("myDIV").style.height = "auto";
+      document.getElementById("citeste").style.display = "none";
+
     }
   }
 </script>
