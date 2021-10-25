@@ -2,10 +2,10 @@
 Proiect AutoSearchNet
 ## Descriere proiect 
 este  o aplicație web WSGI(interfața de gateway a serverului web, standard Python) folosind automatizarea interfeței grafice Microsoft Windows. Permite trimiterea de acțiuni ale mouse-ului și tastaturii către ferestre de dialog și controale. 
-Contine suport pentru motorul de recunoaștere a vorbirii / API. Se utilizeaza comanda vocala pentru actionarea motoarelor Youtub, care cauta videoclipuri, obtine informatii despre acestea si sugestii de cautare.
-Rezultatele sunt afisate,redate vocal, cu posibilitatea deschiderii paginii web dorite (cu continut youtube) si a controlului  acesteia.
+Contine suport pentru motorul de recunoaștere a vorbirii / API. Se utilizeaza comanda vocala in limba romana pentru actionarea motoarelor Youtub, care cauta videoclipuri, obtine informatii despre acestea si sugestii de cautare.
+Rezultatele sunt afisate, redate vocal, in limba romana, cu posibilitatea deschiderii paginii web dorite (cu continut youtube) si a controlului  acesteia.
 ## Dependente si Instalare module
-AutoSearchNet este dependent de Python si Windows. De asemenea, leagă și încorporează mai multe alte biblioteci mai mici: Flask, Pywinauto, SpeechText, Pyaudio, Webbrowser, Youtubesearchpython, Pygame, gTTS, Playsound,Time, Sys, Re
+AutoSearchNet este dependent de Python si Windows. De asemenea, leagă și încorporează mai multe alte biblioteci mai mici: Flask, Pywinauto, SpeechText, Pyaudio, Webbrowser, Youtubesearchpython, Pygame, gTTS, Playsound,Time, Sys, Re, Fuzzywuzzy
 ## Structura aplicației
 * AutoSearchNet
    - data
