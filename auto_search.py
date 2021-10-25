@@ -43,29 +43,12 @@ def index():
                 time.sleep(0.5)
                 if comanda != None:
                     break
-            from youtubesearchpython import Suggestions
-            suggestions = Suggestions(language='en', region='ro', )
-            text = suggestions.get(comanda)
-            text = ','.join(text['result'])
-            sugestiiCautare = text.split(',')
-
-            from youtubesearchpython import VideosSearch
-            try:
-                videosSearch = VideosSearch(comanda, limit=10)
-                x = -1
-                for i in videosSearch.result()['result']:
-                    dateYoutube += [[]]
-                    x += 1
-                    dateYoutube[x].append(i['link'])
-                    dateYoutube[x].append(i['title'])
-                    descriere = i['descriptionSnippet'][0]['text']
-                    descriere = ''.join(descriere)
-                    dateYoutube[x].append(descriere)
-                    dateYoutube[x].append(i['duration'])
-                    dateYoutube[x].append(i['publishedTime'])
-            except:
-                pass
+            youtubesearch = YoutubeSearch(comanda)
+            sugestiiCautare = youtubesearch.suggestions
+            dateYoutube = youtubesearch.videos
+            # print(comanda, sugestiiCautare, dateYoutube)
             return render_template('rezultat.html', sugestiiCautare=sugestiiCautare, dateYoutube=dateYoutube, comanda=comanda)
+        
         elif request.form['comanda_1'] == 'ComandaVocala3':
             sugestiiLinks = ','.join(sugestiiCautare)
             # print('sugestiiCautare', sugestiiCautare)
@@ -74,6 +57,7 @@ def index():
             except:
                 pass
             return render_template('rezultat.html', sugestiiCautare=sugestiiCautare, dateYoutube=dateYoutube, comanda=comanda)
+        
         elif request.form['comanda_1'] == 'ComandaVocala4':
             titluYutube = []
             for i in dateYoutube:
